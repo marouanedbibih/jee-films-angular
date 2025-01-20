@@ -1,0 +1,48 @@
+<form [formGroup]="searchForm" class="flex items-center space-x-4 mt-4">
+  <!-- Title Input -->
+  <div class="flex-1">
+    <div
+      class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-indigo-600"
+    >
+      <input
+        type="text"
+        id="title"
+        class="block w-full py-2 pl-1 pr-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none sm:text-sm"
+        placeholder="Title Films"
+        formControlName="title"
+      />
+      <div *ngIf="title.invalid && title.touched" class="text-red-500 text-sm">
+        Title is required and must be valid.
+      </div>
+    </div>
+  </div>
+
+  <!-- Year Input -->
+  <div class="flex-1">
+    <div
+      class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-indigo-600"
+    >
+      <input
+        type="number"
+        id="year"
+        class="block w-full py-2 pl-1 pr-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none sm:text-sm"
+        placeholder="Year Films"
+        min="1900"
+        max="2025"
+        formControlName="year"
+      />
+      <div *ngIf="year.invalid && year.touched" class="text-red-500 text-sm">
+        Year must be a number between 1900 and 2017.
+      </div>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <button
+    type="button"
+    class="rounded-md bg-gray-700 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-gray-600 focus:outline-none focus:bg-gray-800"
+    (click)="onSearch()"
+  >
+    Search
+  </button>
+</form>
